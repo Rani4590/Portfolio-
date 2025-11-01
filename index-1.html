@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Barsharani Kar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f8fb;
+    --card:#ffffffcc;
+    --glass: rgba(255,255,255,0.12);
+    --accent:#06b6d4; /* teal */
+    --muted:#6b7280;
+    --glass-2: rgba(255,255,255,0.06);
+    --dark-bg:#0b1020;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(135deg,#e6f7ff 0%, #f6f8fb 100%);
+    color:#071126;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+
+  .container{
+    width:100%;
+    max-width:1100px;
+    border-radius:18px;
+    padding:28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65));
+    box-shadow: 0 10px 30px rgba(12,26,56,0.08);
+    backdrop-filter: blur(8px);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* header/dashboard top */
+  header.top{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .profile{
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  .avatar{
+    width:96px;
+    height:96px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ffffff, #eef6fb);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:28px;
+    color:var(--accent);
+    box-shadow: 0 6px 18px rgba(9,30,63,0.06), inset 0 -6px 18px rgba(255,255,255,0.5);
+  }
+  .title h1{margin:0;font-size:22px}
+  .title p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+
+  .cta{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+  .btn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:0;
+    cursor:pointer;
+    font-weight:600;
+    background:linear-gradient(90deg,var(--accent), #0ea5b1);
+    color:white;
+    box-shadow: 0 6px 18px rgba(6,182,212,0.18);
+  }
+  .btn.outline{
+    background:transparent;
+    color:var(--accent);
+    border:1px solid rgba(6,182,212,0.12);
+    box-shadow:none;
+  }
+
+  main{
+    display:grid;
+    grid-template-columns: 1fr 380px;
+    gap:28px;
+    margin-top:22px;
+  }
+
+  /* left column */
+  .card{
+    background:var(--card);
+    border-radius:14px;
+    padding:18px;
+    box-shadow: 0 6px 20px rgba(15,23,42,0.04);
+  }
+  .about p{color:var(--muted);line-height:1.6}
+
+  .skills{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:12px;
+  }
+  .skill{
+    padding:8px 12px;
+    border-radius:999px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(250,250,250,0.6));
+    font-size:13px;
+    color:#07203a;
+    box-shadow: 0 4px 12px rgba(8,20,40,0.04);
+  }
+
+  /* projects */
+  .projects-grid{display:grid;gap:12px; margin-top:12px;}
+  .project-card{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.7));border:1px solid rgba(8,20,40,0.03)}
+  .project-card h4{margin:0}
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(6,182,212,0.08);color:var(--accent)}
+
+  /* right column */
+  aside.side{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .side .info-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,246,250,0.8));border:1px solid rgba(8,20,40,0.03)}
+  .muted{color:var(--muted);font-size:13px}
+
+  /* achievements timeline */
+  .timeline{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .t-item{padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(8,20,40,0.03)}
+
+  /* contact form */
+  form.contact{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  input, textarea{padding:10px;border-radius:8px;border:1px solid rgba(8,20,40,0.05);font-size:14px}
+  textarea{min-height:100px;resize:vertical}
+
+  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:10px}
+
+  /* responsive */
+  @media (max-width:980px){
+    main{grid-template-columns:1fr; }
+    .container{padding:18px}
+  }
+
+  /* dark mode styles */
+  .dark body, .dark .container{background:linear-gradient(135deg,#071126, #071430); color:#e6eef8}
+  .dark .container{background:linear-gradient(180deg, rgba(3,7,18,0.9), rgba(3,7,18,0.8)); box-shadow:none}
+  .dark .card, .dark .project-card, .dark .t-item, .dark .side .info-row{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04)}
+  .dark .avatar{background:linear-gradient(135deg,#031329,#062235); color:var(--accent)}
+  .dark .skill{background:rgba(255,255,255,0.02); color:#cfeef6}
+  .dark .tag{background:rgba(6,182,212,0.06); color:var(--accent)}
+
+  /* small micro-interactions */
+  .project-card:hover{transform:translateY(-6px);transition:all 220ms cubic-bezier(.2,.9,.3,1)}
+  .project-card{transition:all 220ms cubic-bezier(.2,.9,.3,1)}
+
+  /* animated skill bars */
+  .skillbar{width:100%;background:#e9f6f7;border-radius:8px;padding:6px}
+  .skillbar > i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--accent), #0ea5b1);width:0%;transition:width 1.6s ease}
+
+</style>
+</head>
+<body>
+<div class="container" id="page">
+  <header class="top">
+    <div class="profile">
+      <div class="avatar" id="avatar">BK</div>
+      <div class="title">
+        <h1>Barsharani Kar</h1>
+        <p>AI & ML Engineer | Full Stack Developer | Innovator</p>
+        <div class="muted" style="margin-top:6px">Bhubaneswar, Odisha • +91 7847981XX</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <button class="btn" id="downloadCv">Download CV</button>
+      <button class="btn outline" id="toggleTheme">Dark</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card about">
+      <h3>About</h3>
+      <p>Hi, I’m <strong>Barsharani Kar</strong>, a passionate software engineer with hands-on experience in <strong>Artificial Intelligence, Machine Learning, Deep Learning</strong>, and Full Stack Development. I love creating innovative and intelligent systems that bridge technology with real-world solutions. With strong problem-solving skills and a foundation in Data Structures, Algorithms, Robotics, and IoT, I aim to develop impactful projects that combine creativity, logic, and purpose.</p>
+
+      <h4 style="margin-top:18px">Skills</h4>
+      <div class="skills" aria-hidden="false">
+        <div class="skill">C</div>
+        <div class="skill">C++</div>
+        <div class="skill">Java</div>
+        <div class="skill">Python</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">Deep Learning</div>
+        <div class="skill">Data Structures & Algorithms</div>
+        <div class="skill">Robotics</div>
+        <div class="skill">IoT</div>
+      </div>
+
+      <h4 style="margin-top:18px">Skill Levels</h4>
+      <div style="display:grid;gap:10px;margin-top:8px">
+        <div>
+          <div class="muted" style="display:flex;justify-content:space-between"><span>Python / ML</span><span>85%</span></div>
+          <div class="skillbar" data-width="85"><i></i></div>
+        </div>
+        <div>
+          <div class="muted" style="display:flex;justify-content:space-between"><span>Deep Learning</span><span>75%</span></div>
+          <div class="skillbar" data-width="75"><i></i></div>
+        </div>
+        <div>
+          <div class="muted" style="display:flex;justify-content:space-between"><span>Java / Backend</span><span>72%</span></div>
+          <div class="skillbar" data-width="72"><i></i></div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:18px">Featured Projects</h4>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>Face Detection System</h4>
+          <p class="muted">Built an AI-powered system to detect and recognize human faces using OpenCV and Python. Focused on real-time image capture and accuracy optimization.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Real-time</span></div>
+        </div>
+        <div class="project-card">
+          <h4>Object Detection Model</h4>
+          <p class="muted">Designed a deep learning model to identify and classify objects in images using TensorFlow. Implemented a multi-class detection pipeline with bounding box visualization.</p>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Deep Learning</span><span class="tag">CV</span></div>
+        </div>
+        <div class="project-card">
+          <h4>Restaurant Management System</h4>
+          <p class="muted">Developed a Java-based management app for automating orders, billing, and menu operations. Improved efficiency and reduced manual error through database integration.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Desktop</span></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div class="muted">Internships</div>
+            <div style="font-weight:700">CTTC Bhubaneswar (AI & ML)</div>
+            <div style="font-weight:700;margin-top:6px">Protrainy Bhubaneswar (Digital Marketing)</div>
+          </div>
+          <div style="text-align:right"><small class="muted">Achievements</small><div style="font-weight:700;margin-top:6px">Best Intern – Protrainy</div></div>
+        </div>
+        <div style="margin-top:12px" class="timeline">
+          <div class="t-item"><strong>Visited ISRO</strong><div class="muted">YATS program</div></div>
+          <div class="t-item"><strong>Best Student</strong><div class="muted">Class 9 award</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="muted">Contact</div>
+        <div class="info-row" style="margin-top:8px">
+          <div>
+            <div style="font-weight:700">Location</div>
+            <div class="muted">Bhubaneswar, Odisha</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:700">Phone</div>
+            <div class="muted">+91 7847981XX</div>
+          </div>
+        </div>
+
+        <form class="contact" onsubmit="event.preventDefault(); alert('This contact form is a demo — add a backend or mailto link.');">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+          <textarea placeholder="Message"></textarea>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <div class="card" style="text-align:center">
+        <div class="muted">Quick Links</div>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
+          <a class="btn outline" href="#" onclick="alert('Add LinkedIn link')">LinkedIn</a>
+          <a class="btn outline" href="#" onclick="alert('Add GitHub link')">GitHub</a>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <footer>© <span id="year"></span> Barsharani Kar — Built with care · Download this site and host on GitHub Pages or Netlify.</footer>
+</div>
+
+<script>
+  // set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // theme toggle (persist in localStorage)
+  const toggle = document.getElementById('toggleTheme');
+  const root = document.documentElement;
+  const page = document.getElementById('page');
+  let dark = false;
+  toggle.addEventListener('click', ()=>{
+    dark = !dark;
+    document.body.classList.toggle('dark', dark);
+    toggle.textContent = dark ? 'Light' : 'Dark';
+  });
+
+  // animate skill bars when in view
+  function animateBars(){
+    document.querySelectorAll('.skillbar').forEach(sb => {
+      const val = sb.getAttribute('data-width');
+      const bar = sb.querySelector('i');
+      bar.style.width = val + '%';
+    });
+  }
+  // call on load
+  window.addEventListener('load', ()=>{
+    animateBars();
+  });
+
+  // Download a simple CV placeholder
+  document.getElementById('downloadCv').addEventListener('click', ()=>{
+    const content = [
+      'Barsharani Kar',
+      'AI & ML Engineer | Full Stack Developer',
+      '',
+      'Contact: +91 7847981XX',
+      'Location: Bhubaneswar, Odisha',
+      '',
+      'About: Passionate engineer with experience in AI, ML, Deep Learning, Robotics, and IoT.',
+      '',
+      'Skills: C, C++, Java, Python, Machine Learning, Deep Learning, Data Structures & Algorithms, Robotics, IoT'
+    ].join('\n');
+    const blob = new Blob([content], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Barsharani_Kar_CV.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+</script>
+</body>
+</html>
